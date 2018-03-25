@@ -6,12 +6,17 @@ import (
 )
 
 func main() {
-	bst := tree.NewBST()
-	bst.Insert(2, 1, 3)
-	values := tree.Slice(bst.PostOrder)
-	fmt.Println(values)
+	values := []int{1, 2, 3, 4, 0, 9, 5}
 
-	tree.TraverseFunc(bst.InOrder, func(value int) {
-		fmt.Println(value)
-	})
+	bst := tree.NewBST()
+	bst.Insert(values...)
+
+	preorder := tree.Slice(bst.PreOrder)
+	fmt.Println(preorder)
+
+	inorder := tree.Slice(bst.InOrder)
+	fmt.Println(inorder)
+
+	postorder := tree.Slice(bst.PostOrder)
+	fmt.Println(postorder)
 }

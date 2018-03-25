@@ -4,24 +4,28 @@ import "fmt"
 
 // Node represents a tree node.
 type Node struct {
-	value int   // the value of a node
-	left  *Node // a node's left child
-	right *Node // a node's right child
+	value  int   // the value of a node
+	left   *Node // a node's left child
+	right  *Node // a node's right child
+	parent *Node // a node's parent node
 }
 
 // NewNode returns a new node with the specified value.
 func NewNode(value int) *Node {
-	return &Node{value, nil, nil}
+	return &Node{value, nil, nil, nil}
 }
 
 // Tree represents a tree ADT
 type Tree interface {
+	// Root returns the root node of a tree.
 	Root() *Node
+
+	// Insert inserts the specified values into a tree.
 	Insert(values ...int)
 }
 
 // Traverse prints a tree's values in the specified traversal order.
-func Traverse(order TraversalFunc) {
+func Walk(order TraversalFunc) {
 	order(func(value int) {
 		fmt.Println(value)
 	})
@@ -39,7 +43,7 @@ func Slice(order TraversalFunc) []int {
 
 // TraverseFunc traverses a tree in the specified order and applies function f
 // at each node.
-func TraverseFunc(order TraversalFunc, f func(int)) {
+func WalkFunc(order TraversalFunc, f func(int)) {
 	order(f)
 }
 
