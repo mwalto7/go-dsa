@@ -7,8 +7,11 @@ import (
 
 func main() {
 	bst := tree.NewBST()
-	bst.Insert([]int{2, 1, 3}...)
-	bst.TraverseFunc("levelorder", func(data int) {
-		fmt.Printf("%d ", data)
+	bst.Insert(2, 1, 3)
+	values := tree.Slice(bst.PostOrder)
+	fmt.Println(values)
+
+	tree.TraverseFunc(bst.InOrder, func(value int) {
+		fmt.Println(value)
 	})
 }
