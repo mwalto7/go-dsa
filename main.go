@@ -19,4 +19,6 @@ func main() {
 
 	postorder := tree.Slice(bst.PostOrder)
 	fmt.Println(postorder)
+
+	tree.Walk(bst.InOrder)
 }
