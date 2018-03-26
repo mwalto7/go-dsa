@@ -19,10 +19,10 @@ func (b *BSTree) Search(value int) (*Node, error) {
 }
 
 func (b *BSTree) search(n *Node, value int) *Node {
-	if n == nil || value == n.Value {
+	if n == nil || value == n.value {
 		return n
 	}
-	if value < n.Value {
+	if value < n.value {
 		return b.search(n.left, value)
 	} else {
 		return b.search(n.right, value)
@@ -41,7 +41,7 @@ func insert(n *Node, value int) *Node {
 	if n == nil {
 		return NewNode(value)
 	}
-	if value < n.Value {
+	if value < n.value {
 		n.left = insert(n.left, value)
 		n.left.parent = n
 	} else {
@@ -53,7 +53,7 @@ func insert(n *Node, value int) *Node {
 
 func (b *BSTree) Delete(nodes ...*Node) error {
 	for _, node := range nodes {
-		if err := b.delete(b.root, node.Value); err != nil {
+		if err := b.delete(b.root, node.value); err != nil {
 			return err
 		}
 	}

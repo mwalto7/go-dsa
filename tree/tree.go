@@ -12,12 +12,12 @@ type Node struct {
 	left   *Node // a node's left child
 	right  *Node // a node's right child
 	parent *Node // a node's parent node
-	Value  int   // the value of a node
+	value  int   // the value of a node
 }
 
 // NewNode returns a new node with the specified value.
 func NewNode(value int) *Node {
-	return &Node{Value: value}
+	return &Node{value: value}
 }
 
 // Left returns a node's left child node.
@@ -38,7 +38,7 @@ func (n *Node) Parent() *Node {
 // String returns the string representation of a node.
 func (n *Node) String() string {
 	if n != nil {
-		return fmt.Sprintf("%d", n.Value)
+		return fmt.Sprintf("%d", n.value)
 	}
 	return "<nil>"
 }
